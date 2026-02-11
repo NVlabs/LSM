@@ -74,7 +74,7 @@ class LSM_Dust3R(nn.Module):
 
     @classmethod
     def from_pretrained(cls, checkpoint_path: str, use_pretrained_lseg: bool = True, use_pretrained_dust3r: bool = True, device: str = 'cuda'):
-        ckpt = torch.load(checkpoint_path, map_location='cpu') # load checkpoint to cpu for saving memory
+        ckpt = torch.load(checkpoint_path, map_location='cpu', weights_only=False) # load checkpoint to cpu for saving memory
         args = ckpt['args'].model.replace("ManyAR_PatchEmbed", "PatchEmbedDust3R")
         print(f"instantiating {args}")
         model = eval(args)

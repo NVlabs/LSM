@@ -13,6 +13,8 @@
 
 #include <iostream>
 #include <vector>
+#include <cstddef>
+#include <cstdint>
 #include "rasterizer.h"
 #include <cuda_runtime_api.h>
 

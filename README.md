@@ -24,6 +24,7 @@ LSM reconstructs explicit radiance fields from two unposed images in real-time, 
   - [Installation](#installation)
   - [Data Preparation](#data-preparation)
   - [Training](#training)
+  - [Testing / Evaluation](#testing--evaluation)
   - [Inference](#inference)
 - [Acknowledgement](#acknowledgement)
 - [Citation](#citation)
@@ -135,6 +136,32 @@ Optional parameters in `scripts/train.sh`:
 # Directory to save training outputs
 --output_dir "checkpoints/output"
 ```
+
+### Testing / Evaluation
+Run the evaluation pipeline with:
+
+```bash
+bash scripts/test.sh
+```
+
+You can also run `test.py` directly:
+
+```bash
+python test.py \
+  --pretrained "checkpoints/pretrained_models/checkpoint-final.pth" \
+  --test_dataset "TestDataset(split='test', ROOT='data/scannet_test', resolution=(256, 256), seed=777)" \
+  --test_criterion "TestLoss()" \
+  --batch_size 1 \
+  --test_results_dir "outputs/eval"
+```
+
+Evaluation outputs are written to `--test_results_dir`:
+- `metrics_summary.json`: aggregated avg/med metrics per dataset.
+- `{scene_name}/view_{k}_rgb_gt.png`: target RGB ground truth.
+- `{scene_name}/view_{k}_rgb_ours.png`: rendered RGB prediction.
+- `{scene_name}/view_{k}_sem_gt.png`: dataset semantic ground truth.
+- `{scene_name}/view_{k}_sem_lseg.png`: LSeg semantic pseudo-labels.
+- `{scene_name}/view_{k}_sem_ours.png`: rendered semantic prediction.
 
 ### Inference
 1. Data preparation
