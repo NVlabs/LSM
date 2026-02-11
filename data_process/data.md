@@ -20,6 +20,8 @@
     - [Test Set Selection Criteria](#test-set-selection-criteria)
     - [Test Category Label Selection](#test-category-label-selection)
     - [Test Data Loading and Evaluation Workflow](#test-data-loading-and-evaluation-workflow)
+    - [Run Evaluation](#run-evaluation)
+    - [Evaluation Outputs](#evaluation-outputs)
 
 ## Overview
 This document provides instructions for preparing ScanNet and ScanNet++ datasets for training and evaluation.
@@ -277,3 +279,51 @@ The testing process relies on the `TestDataset` class in `large_spatial_model/da
     *   The model takes the `source_view1` and `source_view2` data as input to infer the parameters (e.g., Gaussian parameters for 3D Gaussian Splatting).
     *   Using these inferred parameters and the `target_view`'s camera pose/intrinsics, the model renders a semantic label map for the `target_view`.
     *   This rendered semantic map is then compared against the ground truth semantic label map for the `target_view` from the original ScanNet dataset to evaluate the model's performance.
+
+### Run Evaluation
+After preparing `data/scannet_test`, run:
+
+```bash
+bash scripts/test.sh
+```
+
+Or run `test.py` directly:
+
+```bash
+python test.py \
+  --pretrained "checkpoints/pretrained_models/checkpoint-final.pth" \
+  --test_dataset "TestDataset(split='test', ROOT='data/scannet_test', resolution=(256, 256), seed=777)" \
+  --test_criterion "TestLoss()" \
+  --batch_size 1 \
+  --test_results_dir "outputs/eval"
+```
+
+### Evaluation Outputs
+Expected output structure:
+
+```bash
+outputs/eval/
+├── metrics_summary.json
+└── {scene_name}/
+    ├── view_{k}_rgb_gt.png
+    ├── view_{k}_rgb_ours.png
+    ├── view_{k}_sem_gt.png
+    ├── view_{k}_sem_lseg.png
+    └── view_{k}_sem_ours.png
+```
+
+`metrics_summary.json` contains avg/med aggregates for each test dataset, including:
+- `loss_avg`, `loss_med`
+- `image_loss_avg`, `image_loss_med`
+- `feature_loss_avg`, `feature_loss_med`
+- `mean_psnr_avg`, `mean_psnr_med`
+- `mean_ssim_avg`, `mean_ssim_med`
+- `mean_lpips_avg`, `mean_lpips_med`
+- `mean_miou_avg`, `mean_miou_med`
+- `mean_accuracy_avg`, `mean_accuracy_med`
+- `mean_rel_avg`, `mean_rel_med`
+- `mean_tau_avg`, `mean_tau_med`
+- `mean_pred_dataset_iou_avg`, `mean_pred_dataset_iou_med`
+- `mean_pred_dataset_accuracy_avg`, `mean_pred_dataset_accuracy_med`
+- `mean_lseg_iou_avg`, `mean_lseg_iou_med`
+- `mean_lseg_accuracy_avg`, `mean_lseg_accuracy_med`

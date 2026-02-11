@@ -110,7 +110,7 @@ class LSegFeatureExtractor(LSegNet):
     @classmethod
     def from_pretrained(cls, pretrained_model_name_or_path, *args, **kwargs):
         print(f"Loading checkpoint from: {pretrained_model_name_or_path}")
-        ckpt = torch.load(pretrained_model_name_or_path, map_location='cpu')
+        ckpt = torch.load(pretrained_model_name_or_path, map_location='cpu', weights_only=False)
         print(f"Checkpoint loaded. Keys in checkpoint: {ckpt.keys()}")
         
         print("Processing state dict...")
