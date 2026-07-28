@@ -1,4 +1,4 @@
-<h2 align="center"> <a href="https://arxiv.org/abs/2410.18956"> Large Spatial Model: End-to-end Unposed Images to Semantic 3D
+<h2 align="center"> <a href="https://arxiv.org/abs/2410.18956"> Large Spatial Model: End-to-end Unposed Images to Semantic 3D</a></h2>
 
 <h5 align="center">
 
