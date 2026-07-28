@@ -121,7 +121,7 @@ class BaseSceneProcessor:
                 'pose_data': pose_data,
             },
             "intrinsics": new_intrinsic,
-            "frame_num": batch_size,
+            "frame_num": depth_data.shape[0],
             "scene_name": scene_path.split('/')[-1]
         }
     
