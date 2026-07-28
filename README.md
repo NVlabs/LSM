@@ -45,8 +45,7 @@ LSM reconstructs explicit radiance fields from two unposed images in real-time, 
 [https://github.com/user-attachments/assets/1c4f533f-af01-49b0-beeb-f9f8793c92b7](https://github.com/user-attachments/assets/f53990f9-96a4-4a2e-8378-da5b27260235)
 
 ### RGB Color Rendering
-[https://github.com/user-attachments/assets/e984bc3c-d6f1-4b5c-8850-be00d501c683](https://github.com/user-attachments/assets/d0b09707-c74a-4959-8c58-75771e53995e
-)
+[https://github.com/user-attachments/assets/e984bc3c-d6f1-4b5c-8850-be00d501c683](https://github.com/user-attachments/assets/d0b09707-c74a-4959-8c58-75771e53995e)
 
 ## Get Started
 
