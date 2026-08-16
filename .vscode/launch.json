@@ -85,7 +85,7 @@
                 "--pretrained",
                 "checkpoints/pretrained_models/checkpoint-final.pth",
                 "--test_dataset",
-                "TestDataset(split='test', is_training=False, ROOT='data/scannet_test', resolution=256, seed=777)",
+                "TestDataset(split='test', is_training=False, ROOT='data/scannet_test', resolution=(256, 256), seed=777)",
                 "--test_criterion",
                 "TestLoss()",
                 "--test_results_dir",
