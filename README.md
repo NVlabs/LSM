@@ -2,7 +2,7 @@
 
 <h5 align="center">
 
-[![arXiv](https://img.shields.io/badge/Arxiv-2403.20309-b31b1b.svg?logo=arXiv)](https://arxiv.org/abs/2410.18956)
+[![arXiv](https://img.shields.io/badge/Arxiv-2410.18956-b31b1b.svg?logo=arXiv)](https://arxiv.org/abs/2410.18956)
 [![Home Page](https://img.shields.io/badge/Project-Website-green.svg)](https://largespatialmodel.github.io/)
 
 </h5>
