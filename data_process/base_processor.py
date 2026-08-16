@@ -70,9 +70,9 @@ class BaseSceneProcessor:
             frames_data[frame_idx] = self.load_single_frame(frame_path)
 
         # 3. Stack and process frames
-        depth_data = torch.stack([frame_data['depth_data'] for frame_data in frames_data.values()], axis=0)
-        color_data = torch.stack([frame_data['color_data'] for frame_data in frames_data.values()], axis=0)
-        pose_data = torch.stack([frame_data['pose_data'] for frame_data in frames_data.values()], axis=0)
+        depth_data = torch.stack([frame_data['depth_data'] for frame_data in frames_data.values()], dim=0)
+        color_data = torch.stack([frame_data['color_data'] for frame_data in frames_data.values()], dim=0)
+        pose_data = torch.stack([frame_data['pose_data'] for frame_data in frames_data.values()], dim=0)
 
         # Filter out invalid frames
         valid_mask = self._get_valid_frame_mask(scene_path, depth_data, color_data, pose_data)
